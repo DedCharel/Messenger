@@ -3,6 +3,7 @@ package ru.nvgsoft.messenger;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -49,7 +50,8 @@ public class LoginActivity extends AppCompatActivity {
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // start screen Register
+                Intent intent= RegistrationActivity.newIntent(LoginActivity.this);
+                startActivity(intent);
             }
         });
     }
@@ -61,4 +63,6 @@ public class LoginActivity extends AppCompatActivity {
         textViewForgotPassword = findViewById(R.id.textViewForgotPassword);
         textViewRegister = findViewById(R.id.textViewRegister);
     }
+
+
 }

@@ -6,4 +6,9 @@
     <string name="login">Login</string>
     <string name="forgot_password">Forgot password</string>
     <string name="register">Register</string>
+    <string name="your_name">Your name</string>
+    <string name="your_last_name">Your Last name</string>
+    <string name="sign_up">Sign up</string>
+    <string name="how_old_are_you">How old are you?</string>
+    <string name="registration">Registration</string>
 </resources>
