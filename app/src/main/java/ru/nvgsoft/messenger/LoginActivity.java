@@ -33,6 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         initViews();
+
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,19 +45,23 @@ public class LoginActivity extends AppCompatActivity {
         textViewForgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //start screen ResetPassword
+                Intent intent = ResetPasswordActivity.newIntent(
+                        LoginActivity.this,
+                        editTextEmail.getText().toString().trim()
+                );
+                startActivity(intent);
             }
         });
         textViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= RegistrationActivity.newIntent(LoginActivity.this);
+                Intent intent = RegistrationActivity.newIntent(LoginActivity.this);
                 startActivity(intent);
             }
         });
     }
 
-    private void initViews(){
+    private void initViews() {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);

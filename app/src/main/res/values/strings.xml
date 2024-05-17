@@ -11,4 +11,6 @@
     <string name="sign_up">Sign up</string>
     <string name="how_old_are_you">How old are you?</string>
     <string name="registration">Registration</string>
+    <string name="reset_password">Reset password</string>
+    <string name="forgot_password_title">Forgot password?</string>
 </resources>
