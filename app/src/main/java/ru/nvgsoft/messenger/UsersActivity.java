@@ -9,10 +9,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UsersActivity extends AppCompatActivity {
 
@@ -20,13 +26,39 @@ public class UsersActivity extends AppCompatActivity {
     private RecyclerView recyclerViewUsers;
     private UsersAdapter usersAdapter;
 
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference("Users");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_users);
+        for (int i = 0; i < 10; i++) {
+            User user = new User(
+                    "id" + i, "name" + i, "lastName" + i, i, false
+            );
+            databaseReference.push().setValue(user);
+        }
+
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
+                    User value = dataSnapshot.getValue(User.class);
+                    Log.d("UserActivity", value.toString());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         initViews();
         viewModel = new ViewModelProvider(this).get(UsersViewModel.class);
         observeViewModel();
+
     }
 
     private void initViews(){

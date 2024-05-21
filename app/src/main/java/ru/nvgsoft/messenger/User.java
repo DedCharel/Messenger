@@ -3,17 +3,20 @@ package ru.nvgsoft.messenger;
 public class User {
 
     private String id;
-    private String Name;
-    private String LastName;
+    private String name;
+    private String lastName;
     private int age;
     private boolean isOnline;
 
     public User(String id, String name, String lastName, int age, boolean isOnline) {
         this.id = id;
-        Name = name;
-        LastName = lastName;
+        this.name = name;
+        this.lastName = lastName;
         this.age = age;
         this.isOnline = isOnline;
+    }
+
+    public User() {
     }
 
     public String getId() {
@@ -21,12 +24,14 @@ public class User {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
+
+
 
     public int getAge() {
         return age;
@@ -34,5 +39,16 @@ public class User {
 
     public boolean isOnline() {
         return isOnline;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", Name='" + name + '\'' +
+                ", LastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", isOnline=" + isOnline +
+                '}';
     }
 }
