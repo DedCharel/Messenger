@@ -86,7 +86,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (firebaseUser != null) {
                     Toast.makeText(LoginActivity.this, "Authorized", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = UsersActivity.newIntent(LoginActivity.this);
+                    Intent intent = UsersActivity.newIntent(LoginActivity.this, firebaseUser.getUid());
                     startActivity(intent);
                     finish();
                 }
