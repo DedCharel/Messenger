@@ -23,6 +23,11 @@ public class MessagesAdapter extends RecyclerView.Adapter<MessagesAdapter.Messag
         this.currentUserId = currentUserId;
     }
 
+    public void setMessages(List<Message> messages) {
+        this.messages = messages;
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
     public MessagesViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
