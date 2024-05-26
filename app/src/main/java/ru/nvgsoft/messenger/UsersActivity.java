@@ -95,4 +95,15 @@ public class UsersActivity extends AppCompatActivity {
         return  intent;
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        viewModel.setUserOnline(true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        viewModel.setUserOnline(false);
+    }
 }
